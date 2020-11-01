@@ -397,7 +397,7 @@ def store_simulation_state(solver, fluxes=False, sources=False,
     tot_time = solver.getTotalTime()
     keff = solver.getKeff()
 
-    if solver_type is 'GPUSolver':
+    if solver_type == 'GPUSolver':
         num_threads = solver.getNumThreadsPerBlock()
         num_blocks = solver.getNumThreadBlocks()
     else:
@@ -469,7 +469,7 @@ def store_simulation_state(solver, fluxes=False, sources=False,
         time_group.create_dataset('time [sec]', data=tot_time)
         time_group.create_dataset('keff', data=keff)
 
-        if solver_type is 'GPUSolver':
+        if solver_type == 'GPUSolver':
             time_group.create_dataset('# threads per block', data=num_threads)
             time_group.create_dataset('# thread blocks', data=num_blocks)
         else:
@@ -532,7 +532,7 @@ def store_simulation_state(solver, fluxes=False, sources=False,
         state['time [sec]'] = tot_time
         state['keff'] = keff
 
-        if solver_type is 'GPUSolver':
+        if solver_type == 'GPUSolver':
             state['# threads per block'] = num_threads
             state['# thread blocks'] = num_blocks
         else:
@@ -675,7 +675,7 @@ def restore_simulation_state(filename='simulation-state.h5',
                 state['time [sec]'] = time
                 state['keff'] = keff
 
-                if solver_type is 'GPUSolver':
+                if solver_type == 'GPUSolver':
                     state['# threads per block'] = \
                         int(dataset['# threads per block'])
                     state['# thread blocks'] = int(dataset['# thread blocks'])
