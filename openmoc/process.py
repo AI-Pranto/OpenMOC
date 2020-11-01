@@ -447,7 +447,7 @@ def store_simulation_state(solver, fluxes=False, sources=False,
         time_group = day_group.require_group(time_key)
 
         # Store a note for this simulation state
-        if not note is '':
+        if note != '':
             time_group.attrs['note'] = note
 
         # Store simulation data to the HDF5 file
@@ -510,7 +510,7 @@ def store_simulation_state(solver, fluxes=False, sources=False,
         state = sim_states[day][time]
 
         # Store a note for this simulation state
-        if not note is '':
+        if note != '':
             state['note'] = note
 
         # Store simulation data to a Python dictionary
